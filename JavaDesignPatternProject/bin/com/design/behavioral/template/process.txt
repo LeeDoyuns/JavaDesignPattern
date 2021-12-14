@@ -1,4 +1,4 @@
-Template method 패프로세스 정리
+Template method 프로세스 정리
 
 라면 끓이기
 

@@ -1,4 +1,4 @@
-package com.design.behavioral.template.use;
+package com.design.behavioral.template;
 
 import com.design.behavioral.template.cls.AnchovyKalguksu;
 import com.design.behavioral.template.cls.JjapaghettiRamen;

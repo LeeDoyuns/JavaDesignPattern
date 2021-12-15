@@ -1,4 +1,4 @@
-package com.design.creational.singleton.use;
+package com.design.creational.singleton;
 
 import com.design.creational.singleton.cls.Singleton;
 

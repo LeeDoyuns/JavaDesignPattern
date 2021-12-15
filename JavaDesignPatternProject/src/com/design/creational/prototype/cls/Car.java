@@ -25,12 +25,15 @@ public class Car implements Cloneable {
 		return "frame="+frame+", wheel="+wheel;
 	}
 	
+	/**
+	 * 깊은 복사
+	 */
 	@Override
 	public Object clone() {
 		Object obj = null;
 		try {
 			obj = super.clone();
-		}catch(Exception e) {
+		}catch(CloneNotSupportedException  e) {
 			System.out.println(e.getMessage());
 		}
 		return obj;

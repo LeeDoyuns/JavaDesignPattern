@@ -1,6 +1,6 @@
 package com.design.creational.prototype.cls;
 
-public class Wheel {
+public class Wheel implements Cloneable{
 
 	private String name;
 	

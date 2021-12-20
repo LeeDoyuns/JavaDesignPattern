@@ -1,15 +1,15 @@
 package com.design.custom.factory;
 
-import java.util.HashSet;
 
 import com.design.custom.cls.book.Book;
 import com.design.custom.cls.member.MemberInterface;
-import com.design.custom.cls.singleton.BookShelf;
 import com.design.custom.intface.Person;
 
 /**
  * 멤버 등록,삭제와
  * 대출,반납,대출기간 연장 등을 관리하는 클래스.
+ * 대출,반납,연장은 실질적으로 Book에서 관리할 영역이기에 book에서 실질적인 로직을 처리한다. 
+ * Member는 그저 책을 가져가고 가져올 뿐!
  * @author Doyun
  *
  */

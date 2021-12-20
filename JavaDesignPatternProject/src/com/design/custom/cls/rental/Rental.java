@@ -31,6 +31,13 @@ public class Rental {
 				+ ", 대출종료일=" + rentalEndDate + "]";
 	}
 	
+	//책 검색을 위한 bookcode
+	public String getBookCode() {
+		return bookCode;
+	}
+	public LocalDate getEndDt() {
+		return rentalEndDate;
+	}
 	
 	
 }

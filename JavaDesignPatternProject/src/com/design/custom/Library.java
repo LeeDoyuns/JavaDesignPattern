@@ -20,8 +20,8 @@ public class Library {
 	
 	public static void main(String[] args) {
 		
-		BookInterface book = new BookSystem();
-		MemberInterface member = new MemberSystem();
+		BookSystem book = new BookSystem();
+		MemberSystem member = new MemberSystem();
 		
 		//회원 등록
 		Person john = member.createMemberInfo("john", 15, 'M', "화순군");
@@ -50,18 +50,19 @@ public class Library {
 //		book.removeBook(harrypotter5);
 		
 //		memberPrint(member.retrieveMember());	//멤버 출력
-//		bookPrint(book.retrieveBookList());		//책목록 출력
 		
 		//대출
-		((MemberSystem)member).rentalBook(cury, coffee);
-		((MemberSystem)member).rentalBook(cury, harrypotter2,"2021-12-25");
-		((BookSystem)book).printRentalList();	//대출 목록 출력
-		
-		
+		member.rentalBook(cury, coffee);
+		member.rentalBook(cury, harrypotter2,"2021-12-19");
+//		book.printRentalList();	//대출 목록 출력
+//		bookPrint(book.retrieveBookList());		//책목록 출력
 		
 		//반납
+		member.returnBook(cury, harrypotter2);	//연체된 책
+		member.returnBook(cury,  coffee);	//연체된 책
+		bookPrint(book.retrieveBookList());		//반납 완료 - 책 목록 출력
 		
-		//연장
+		//대출 기간 연장
 		
 		
 		

@@ -1,7 +1,10 @@
 package com.design.custom.factory;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.design.custom.cls.book.Book;
 import com.design.custom.cls.book.BookInterface;
@@ -24,7 +27,7 @@ public class BookSystem extends BookInterface{
 	private LinkedList<Rental> rentalList = RentalList.getInstance();
 	
 	
-	public void addRentalList(Person m, Book b) {
+	public Rental addRentalList(Person m, Book b) {
 		Rental rental = Rental.Build().name(((Member)m).getName())
 					.bookCode(b.getBookCode())
 					.title(b.getBookTitle())
@@ -32,10 +35,10 @@ public class BookSystem extends BookInterface{
 					.rentalEndDate(null)
 					.build();
 		rentalList.add(rental);
-		
+		return rental;
 	}
 	
-	public void addRentalList(Person m, Book b,String rentalEndDate) {
+	public Rental addRentalList(Person m, Book b,String rentalEndDate) {
 		Rental rental = Rental.Build().name(((Member)m).getName())
 					.bookCode(b.getBookCode())
 					.title(b.getBookTitle())
@@ -43,7 +46,7 @@ public class BookSystem extends BookInterface{
 					.rentalEndDate(rentalEndDate)
 					.build();
 		rentalList.add(rental);
-		
+		return rental;
 	}
 	
 	public void printRentalList() {
@@ -52,6 +55,24 @@ public class BookSystem extends BookInterface{
 			System.out.println(ren);
 		});
 		System.out.println("====================================");
+	}
+
+	public void returnBook(Person m, Book b) {
+		addBook(b);
+	}
+
+	public boolean removeRentalList(Person m, Book b) {
+		//일단 책을 찾는다.
+		Rental ren =(Rental) rentalList.stream().filter(book->book.getBookCode().equals(b.getBookCode())).toArray()[0];
+		
+		if(LocalDate.now().isAfter(ren.getEndDt()) ) {
+			System.out.println(b.getBookTitle()+"["+ren.getBookCode()+"]도서가 연체되었습니다.");
+			return false;
+		}else {
+			rentalList.remove(ren);
+			return true;
+		}
+		
 	}
 	
 	

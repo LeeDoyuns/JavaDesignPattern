@@ -15,7 +15,7 @@ import com.design.custom.intface.Person;
  */
 public class MemberSystem extends MemberInterface{
 	
-	
+	private BookSystem book = new BookSystem();
 	
 	//대출
 	public void rentalBook(Person m, Book b) {
@@ -27,23 +27,23 @@ public class MemberSystem extends MemberInterface{
 	}
 	
 	//대출
-		public void rentalBook(Person m, Book b,String rentalEndDate) {
-			BookSystem book = new BookSystem();
-			
-			//소유한 책리스트에서 삭제.
-			book.removeBook(b);
-			//rentalList에 삽입
-			book.addRentalList(m, b,rentalEndDate);
-			
-			
-		}
-	
-	//반납
-	public void returnBook(Person m, Book b) {
+	public void rentalBook(Person m, Book b,String rentalEndDate) {
+		
+		//소유한 책리스트에서 삭제.
+		book.removeBook(b);
+		//rentalList에 삽입
+		book.addRentalList(m, b,rentalEndDate);
+		
 		
 	}
 	
-	//연장
+	//반납
+	public void returnBook(Person m, Book b) {
+		book.removeRentalList(m,b);
+		book.addBook(b);	//일단 반납은 하고 연체됐다고 알림만 준다.
+	}
+	
+	//대출기간 연장
 	public void extensionRentalDate(Person m, Book b) {
 		
 	}
